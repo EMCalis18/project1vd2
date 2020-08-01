@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+{{ object.first_name }}
+{% endblock title %}
+
+
+{% block content %}
+{% include 'includes/header.html' %}
+<div class="grid-container ">
+    <div class="grid-x">
+        <h1>Detalle de "{{ object.first_name }}"</h1>
+
+        <table style="margin: 40px;">
+            <thead style="margin: 20px;">
+                <tr >
+                    <th width="200">Nombres</th>
+                    <th>Apellidos</th>
+                    <th width="150">Trabajo</th>
+                    <th width="150">Departamento</th>
+                    <th width="150">Habilidades</th>
+                    <th width="150">Foto</th>
+                </tr>
+            </thead>
+            <tbody style="margin: 20px;">
+                <tr >
+                    <td>{{ object.first_name }}</td>
+                    <td>{{ object.last_name }}</td>
+                    <td>{{ object.get_job_display }}</td>
+                    <td>{{ object.departamento.shor_name }}</td>
+                    <td>                        
+                        {% for h in object.habilidad.all %}
+                            {{ h.habilidad }}
+                        {% endfor %}                
+                    </td>
+                    <td>                        
+                        {% if object.avatar %}
+                            <img src="{{ object.avatar.url }}" alt=":("> 
+                        {% else %}
+                            <img src="{% static 'img/Emoji.jpg' %}" alt=":("> 
+                        {% endif %}                                      
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+{% include 'includes/footer.html' %}
+{% endblock content %}

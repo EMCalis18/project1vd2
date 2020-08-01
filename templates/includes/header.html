@@ -1,0 +1,22 @@
+
+<div class="top-bar" style="background: rgb(157, 236, 210);">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" style="background: rgb(157, 236, 210);" data-dropdown-menu>
+        <li style="text-shadow: black;"> <a href="{% url 'persona_urls:inicio' %}">Empleados</a></li>
+            <li>
+                <a href="{% url 'persona_urls:empleados-all' %} ">Listar</a>
+            </li>
+            <li><a href="{% url 'departamento_urls:lista-de-departamento' %}">Departamentos</a></li>
+            <li><a href="{% url 'persona_urls:empleado-admin' %}">Administrar</a></li>
+            <li><a href="{% url 'departamento_urls:new_departamento' %}">Nuevo Departameto</a></li>
+            
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu">
+        <li><input type="search" placeholder="Buscar empleado"></li>
+        <li><a style="margin-left:6px ;" href="{% url 'persona_urls:form' %}" class="button">LOG IN</a></li>
+        
+      </ul>
+    </div>
+</div>

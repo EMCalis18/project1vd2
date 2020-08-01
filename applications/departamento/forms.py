@@ -1,0 +1,7 @@
+from django import forms
+
+class NewDepartamentoForms(forms.Form):
+    nombre = forms.CharField( max_length=50)
+    apellidos = forms.CharField( max_length=50)
+    departamentos = forms.CharField( max_length=50)
+    shorname = forms.CharField( max_length=50)

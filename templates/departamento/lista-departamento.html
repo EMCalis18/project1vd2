@@ -1,0 +1,38 @@
+
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Departamento
+{% endblock title %}
+    
+
+{% block content %}
+{% include 'includes/header.html' %}
+<div >
+    <div class="grid-x grid-margin-x">
+        <h1 class="cell " style="margin: 50px; "> Lista De Todos Los Departamentos</h1>
+        <table class="cell" style="margin: 50px;border: 1cm;font-size: large; ">
+            <thead>
+                <tr>
+                    <th width="200">Departamento</th>
+                    <th>Nombre corto</th>
+                    <th width="150">Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for e in departamentos %}
+                <tr>
+                    <td>{{ e.name }}</td>
+                    <td>{{ e.shor_name }}</td>
+                    <td><a href="{% url 'persona_urls:lista_area_empleado' e.shor_name %}"  class="button warning">Ver</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% include 'includes/footer.html' %}
+{% endblock content %}

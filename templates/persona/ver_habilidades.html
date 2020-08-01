@@ -1,0 +1,16 @@
+<h1>Buscar empleado para ver sus habilidades</h1>
+
+<form method="GET">
+    <input type="number" id="valor" name="valor" placeholder="Ingrese el empleado">
+    <button type="submit">Buscar</button>
+</form>
+
+<ul>
+    
+    {% for e in habilidades %}
+        <li>
+            {{ e }}
+        </li>
+    {% endfor %}
+        
+</ul>

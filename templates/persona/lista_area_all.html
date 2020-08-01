@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Lista de area de Empleados
+{% endblock title %}
+
+
+{% block content %}
+{% include 'includes/header.html' %}
+<div >
+  <h1 style="margin: 10px;">Detalle de departamento </h1>
+
+  <table class="cell" style="margin-left: 10px;">
+    <thead >
+      <tr>
+        <th width="150">id</th>
+        <th width="200">Nombres</th>
+        <th>Apellidos</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {% for e in emplados %}
+      <tr>
+        <td>{{ e.id }}</td>
+        <td>{{ e.first_name }}</td>
+        <td>{{ e.last_name }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% include 'includes/footer.html' %}
+{% endblock content %}
