@@ -47,6 +47,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'empleado.urls'
@@ -83,11 +84,14 @@ DATABASES = {
 import dj_database_url
 from decouple import config
 
-DATABASE = {
+"""DATABASE = {
     'default': dj_database_url.config(
         default=config('DATABASE_URL')
     )
-}
+}"""
+
+db_from_env = dj_database_url.config(conn_max_age=500)  
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -125,4 +129,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')  
 STATIC_URL = '/static/'
+# Extra places for collectstatic to find static files.
+
+"""
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR.child('media')"""
+STATICFILES_DIRS = [BASE_DIR.child('static')]
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
